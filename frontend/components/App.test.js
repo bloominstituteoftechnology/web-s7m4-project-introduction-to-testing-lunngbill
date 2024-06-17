@@ -11,7 +11,15 @@ describe('Module 4 Project Tests', () => {
 
       One test is done for you as an example.
     */
-    test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
+    
+      let texts = getEntriesByKeyPrefix(txt.en, 'TEXT')
+      for (let [key, val] of texts) {
+        test(`${key} is visible`, () => {
+          render (<App />)
+          expect(screen.getByText(val)).toBeVisible()
+        })
+      }
+    /*test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
       render(<App lang="en" />)
       expect(screen.getByText(txt.en.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
     })
@@ -47,6 +55,7 @@ describe('Module 4 Project Tests', () => {
       render(<App lang="en" />)
       expect(screen.getByText(txt.en.TEXT_FAV_LANG)).toBeVisible()
     })
+    */
     test(`LABEL_USERNAME is visible`, () => {
       render(<App lang="en" />)
       expect(screen.getByLabelText(txt.en.LABEL_USERNAME)).toBeVisible()
